@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; /* removendo margem */
+  font-size: 16px; /* tamanho da fonte */
+  color: #263238; /* cor do texto */
+  background: #f2f4f8;
+}
+
+header {
+  display: flex; /* definindo o header como flex */
+  justify-content: space-between; /* espaçamento entre os elementos */
+  align-items: center; /* alinhando os elementos de forma centralizada */
+  background: #1f4e78; /* cor de fundo do header */
+}
+
+header p {
+  margin: 0; /* removendo margem */
+  font-size: 20px; /* tamanho da fonte */
+  font-weight: bold; /* deixando a fonte em negrito */
+  color: white; /* cor do texto */
+}
+
+nav ul {
+  display: flex; /* definindo o ul como flex */
+  gap: 24px; /* espaçamento entre os itens da lista */
+  margin: 0; /* removendo espaçamento exterior */
+  padding: 0; /* removendo espaçamento interior */
+  list-style: none; /* removendo marcadores da lista */
+}
+
+nav a {
+  text-decoration: none; /* removendo sublinhado do link */
+  color: white; /* cor do link */
+  font-weight: bold; /* deixando a fonte em negrito */
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline; /* adicionando sublinhado ao passar o mouse ou focar no link */
+}
+
+main {
+  max-width: 900px; /* definindo a largura máxima do main */
+  margin: 32px auto; /* centralizando o main */
+  padding: 0 16px; /* adicionando espaçamento interno */
+}
+
+section {
+  margin-bottom: 32px; /* adicionando espaçamento inferior */
+  padding: 24px; /* adicionando espaçamento interno */
+  background: white; /* cor de fundo da seção */
+  border-radius: 12px; /* arredondando os cantos da seção */
+}
+
+h1 {
+  margin-top: 0; /* removendo margem superior */
+  font-size: 32px; /* tamanho da fonte */
+  color: #1f4e78; /* cor do texto */
+}
+
+h2 {
+  margin-top: 0; /* removendo margem superior */
+  color: #1f4e78; /* cor do texto */
+}
+
+.botao {
+  display: inline-block; /* definindo o botão como um elemento de bloco inline */
+  padding: 12px 24px; /* adicionando espaçamento interno */
+  background: #f5b82e; /* cor de fundo do botão */
+  color: #263238; /* cor do texto do botão */
+  text-decoration: none; /* removendo sublinhado do link */
+  border-radius: 8px; /* arredondando os cantos do botão */
+}
+
+.botao:hover,
+.botao:focus {
+  background: #e0a21c; /* cor de fundo do botão ao passar o mouse ou focar */
+}
+
+#servicos ul {
+  display: flex; /* definindo a lista como flex */
+  flex-wrap: wrap; /* quebrando os itens da lista */
+  gap: 16px; /* separando os itens da lista */
+  padding: 0; /* removendo espaçamentos internos */
+  list-style: none; /* removendo marcadores da lista */
+}
+
+#servicos li {
+  padding: 16px; /* adicionando espaçamento interno */
+  background: #e3f2fd; /* mudando a cor de fundo */
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  flex: 1 1 200px;
+}
+
+.contatos {
+  list-style: none;
+  padding: 0;
+}
+
+.contatos li {
+  margin-bottom: 12px;
+}
+
+.contatos a {
+  display: block;
+  padding: 16px;
+  background: white;
+  color: #1f4e78;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #1f4e78;
+  border-radius: 8px;
+}
+
+.contatos a:hover,
+.contatos a:focus {
+  background: #1f4e78;
+  color: white;
+}
+
+footer {
+  padding: 24px;
+  background: #263238;
+  color: white;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
