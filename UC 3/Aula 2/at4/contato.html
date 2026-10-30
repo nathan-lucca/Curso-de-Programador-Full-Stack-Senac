@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="#conteudo_principal" class="pular"
+      >Pular para o conteúdo principal</a
+    >
+
+    <header class="topo">
+      <a class="logo" href="index.html">Loja do Seu Antônio</a>
+      <nav aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="index.html#servicos">Serviços</a></li>
+          <li><a href="index.html#precos">Preços</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="conteudo_principal">
+      <h1>Peça seu orçamento</h1>
+      <p>Preencha o formulário abaixo para enviar o orçamento</p>
+
+      <form action="#" method="post" class="formulario">
+        <fieldset>
+          <legend>Seus dados</legend>
+
+          <label for="nome">Nome *</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            required
+            autocomplete="name"
+          />
+
+          <label for="email">E-mail *</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            autocomplete="email"
+          />
+
+          <label for="telefone">Telefone *</label>
+          <input
+            type="tel"
+            name="telefone"
+            id="telefone"
+            required
+            autocomplete="tel"
+            placeholder="(81) 99999-9999"
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>Sobre o concerto</legend>
+
+          <label for="servico">Serviço *</label>
+          <select name="servico" id="servico" required>
+            <option value="" selected>Selecione um serviço</option>
+            <option value="formatacao">Formatação</option>
+            <option value="tela">Troca de tela</option>
+            <option value="limpeza">Limpeza Interna</option>
+            <option value="outro">Outro</option>
+          </select>
+
+          <label for="data">Data preferida para deixar o aparelho</label>
+          <input type="date" name="data" id="data" />
+
+          <label for="mensagem">Descreva o defeito *</label>
+          <textarea
+            name="mensagem"
+            id="mensagem"
+            rows="5"
+            required
+            minlength="10"
+            maxlength="50"
+          ></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Como preferece receber o orçamento?</legend>
+
+          <div class="opcao">
+            <input
+              type="radio"
+              name="retorno"
+              id="receb-whatsapp"
+              value="whatsapp"
+              checked
+            />
+            <label for="receb-whatsapp">WhatsApp</label>
+          </div>
+
+          <div class="opcao">
+            <input type="radio" name="retorno" id="receb-email" value="email" />
+            <label for="receb-email">E-mail</label>
+          </div>
+        </fieldset>
+
+        <div class="opcao">
+          <input type="checkbox" name="aceite" id="aceite" required />
+          <label for="aceite"
+            >Aceito ser contatado sobre este orçamento *</label
+          >
+        </div>
+
+        <button type="submit" class="botao">Enviar orçamento</button>
+      </form>
+
+      <section class="outros-contatos">
+        <h2>Outras formas de falar conosco</h2>
+
+        <ul class="contatos">
+          <li>
+            <a href="https://wa.me/5581940028922" target="_blank"
+              >Conversar no WhatsApp</a
+            >
+          </li>
+          <li>
+            <a href="mailto:contato@seuantonio.com.br"
+              >Enviar e-mail para Seu Antônio</a
+            >
+          </li>
+          <li><a href="tel:5581940028922">Ligar para Seu Antônio</a></li>
+        </ul>
+
+        <h2>Onde estamos</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.162798060761!2d-35.96337112522841!3d-8.286591691748042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a98b000b8693eb%3A0xc35d15cb87390c3d!2sSeu%20Ant%C3%B4nio%20Botequim!5e0!3m2!1spt-BR!2sbr!4v1793388679452!5m2!1spt-BR!2sbr"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <p>Rua da Matriz, 100 - Centro, Caruaru - PE</p>
+      <p>Segunda à sexta, das 8h às 18h</p>
+    </footer>
+  </body>
+</html>

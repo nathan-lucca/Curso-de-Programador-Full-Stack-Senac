@@ -1,0 +1,350 @@
+/* Define as variáveis globais de cores, fontes e espaçamentos do site */
+:root {
+  --cor-primaria: #1f4e78; /* Cor principal utilizada no cabeçalho e nos títulos */
+  --cor-destaque: #f5b82e; /* Cor de destaque utilizada nos botões */
+  --cor-destaque-hover: #e0a21c; /* Cor do destaque ao passar o mouse */
+  --cor-texto: #263238; /* Cor padrão dos textos */
+  --cor-suave: #546e7a; /* Cor secundária para textos menos destacados */
+  --cor-fundo: #f2f4f8; /* Cor de fundo geral da página */
+  --cor-card: #ffffff; /* Cor de fundo dos cartões e das seções */
+  --cor-linha: #d5dce6; /* Cor das bordas e das linhas divisórias */
+  --fonte:
+    Arial, Helvetica, sans-serif; /* Define a família de fontes utilizada */
+  --espaco: 16px; /* Define o espaçamento padrão entre os elementos */
+  --raio: 10px; /* Define o arredondamento padrão dos cantos */
+}
+
+/* Aplica o box-sizing a todos os elementos da página */
+* {
+  box-sizing: border-box; /* Inclui padding e borda no cálculo da largura e altura */
+}
+
+/* Define os estilos gerais do corpo da página */
+body {
+  margin: 0; /* Remove a margem padrão do navegador */
+  font-family: var(--fonte); /* Aplica a fonte definida nas variáveis */
+  line-height: 1.5; /* Define o espaçamento entre as linhas do texto */
+  font-size: 16px; /* Define o tamanho padrão da fonte */
+  color: var(--cor-texto); /* Define a cor padrão dos textos */
+  background: var(--cor-fundo); /* Define a cor de fundo da página */
+}
+
+/* Define como as imagens devem se comportar */
+img {
+  max-width: 100%; /* Impede que a imagem ultrapasse a largura do contêiner */
+  height: auto; /* Mantém a proporção original da imagem */
+  display: block; /* Remove o espaço extra associado ao alinhamento inline */
+}
+
+/* Destaca visualmente os elementos que recebem foco pelo teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--cor-destaque); /* Adiciona um contorno de destaque */
+  outline-offset: 2px; /* Afasta o contorno da borda do elemento */
+}
+
+/* Posiciona o link de acessibilidade fora da área visível inicialmente */
+.pular {
+  position: absolute; /* Permite posicionar o elemento independentemente do fluxo */
+  left: -9999px; /* Move o link para fora da tela */
+  top: 0; /* Define a posição superior */
+  padding: 8px 16px; /* Adiciona espaçamento interno */
+  background: var(--cor-destaque); /* Destaca o link com uma cor de fundo */
+  font-weight: bold; /* Aplica negrito ao texto */
+  z-index: 10; /* Mantém o link acima de outros elementos quando visível */
+}
+
+/* Torna o link de acessibilidade visível quando recebe foco */
+.pular:focus {
+  left: 16px; /* Posiciona o link próximo à borda esquerda */
+  top: 16px; /* Posiciona o link abaixo da borda superior */
+}
+
+/* Organiza os elementos do cabeçalho usando Flexbox */
+.topo {
+  display: flex; /* Organiza os elementos em um contêiner flexível */
+  flex-wrap: wrap; /* Permite que os elementos passem para outra linha */
+  justify-content: space-between; /* Distribui os elementos com espaço entre eles */
+  align-items: center; /* Alinha os elementos verticalmente ao centro */
+  gap: var(--espaco); /* Define o espaçamento entre os elementos */
+  padding: var(--espaco) 32px; /* Adiciona espaçamento interno vertical e horizontal */
+  background: var(--cor-primaria); /* Define a cor de fundo do cabeçalho */
+}
+
+/* Define a aparência do logotipo */
+.logo {
+  color: white; /* Define a cor do texto como branca */
+  font-size: 20px; /* Define o tamanho da fonte do logotipo */
+  font-weight: bold; /* Aplica negrito ao texto */
+  text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Organiza horizontalmente a lista de links do menu */
+.topo nav ul {
+  display: flex; /* Coloca os itens do menu lado a lado */
+  flex-wrap: wrap; /* Permite quebrar os itens em várias linhas */
+  gap: 24px; /* Define o espaçamento entre os links */
+  margin: 0; /* Remove a margem padrão da lista */
+  padding: 0; /* Remove o espaçamento interno padrão da lista */
+  list-style: none; /* Remove os marcadores da lista */
+}
+
+/* Define a aparência dos links de navegação */
+.topo nav a {
+  color: white; /* Define a cor dos links como branca */
+  font-weight: bold; /* Destaca os links com negrito */
+  text-decoration: none; /* Remove o sublinhado dos links */
+  padding: 8px 0; /* Adiciona espaçamento interno vertical */
+}
+
+/* Destaca o link quando o mouse passa sobre ele ou quando ele representa a página atual */
+.topo nav a:hover,
+.topo nav a[aria-current="page"] {
+  text-decoration: underline; /* Adiciona um sublinhado ao link */
+  text-underline-offset: 6px; /* Afasta o sublinhado do texto */
+}
+
+/* Define a largura e o posicionamento da área principal do conteúdo */
+main {
+  max-width: 960px; /* Limita a largura máxima do conteúdo principal */
+  margin: 32px auto; /* Adiciona margem vertical e centraliza horizontalmente */
+  padding: 0 var(--espaco); /* Adiciona espaçamento interno nas laterais */
+}
+
+/* Define a aparência e o espaçamento das seções */
+section {
+  margin-bottom: 32px; /* Adiciona espaço abaixo de cada seção */
+  padding: 24px; /* Adiciona espaçamento interno */
+  background: var(--cor-card); /* Define o fundo branco da seção */
+  border-radius: var(--raio); /* Arredonda os cantos da seção */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* Adiciona uma sombra discreta */
+}
+
+/* Aplica estilos comuns aos títulos de nível 1, 2 e 3 */
+h1,
+h2,
+h3 {
+  color: var(--cor-primaria); /* Define a cor dos títulos */
+  line-height: 1.2; /* Aproxima as linhas dos títulos */
+}
+
+/* Define o estilo do título principal */
+h1 {
+  margin-top: 0; /* Remove a margem superior padrão */
+  font-size: 2rem; /* Define o tamanho da fonte como duas vezes o tamanho raiz */
+}
+
+/* Define o estilo dos títulos secundários */
+h2 {
+  margin-top: 0; /* Remove a margem superior padrão */
+  font-size: 1.5rem; /* Define o tamanho da fonte como uma vez e meia o tamanho raiz */
+}
+
+/* Define o espaçamento externo das figuras */
+figure {
+  margin: 24px 0 0; /* Adiciona margem superior e remove as margens laterais */
+}
+
+/* Define a aparência das legendas das figuras */
+figcaption {
+  margin-top: 8px; /* Adiciona espaço entre a imagem e a legenda */
+  font-size: 14px; /* Reduz o tamanho da fonte da legenda */
+  color: var(--cor-suave); /* Aplica uma cor secundária ao texto */
+}
+
+/* Define a aparência padrão dos botões e links estilizados como botões */
+.botao {
+  display: inline-block; /* Permite aplicar dimensões e espaçamentos mantendo o fluxo inline */
+  padding: 12px 24px; /* Define o espaçamento interno do botão */
+  border: none; /* Remove a borda padrão */
+  border-radius: 8px; /* Arredonda os cantos do botão */
+  background: var(--cor-destaque); /* Define a cor de fundo do botão */
+  color: var(--cor-texto); /* Define a cor do texto do botão */
+  font-family: inherit; /* Herda a fonte do elemento pai */
+  font-size: 16px; /* Define o tamanho da fonte */
+  font-weight: bold; /* Aplica negrito ao texto */
+  text-decoration: none; /* Remove o sublinhado caso seja um link */
+  cursor: pointer; /* Exibe o cursor de clique ao passar o mouse */
+}
+
+/* Altera a cor de fundo do botão quando o mouse passa sobre ele */
+.botao:hover {
+  background: var(
+    --cor-destaque-hover
+  ); /* Aplica a cor de destaque alternativa */
+}
+
+/* Organiza os cartões em linhas flexíveis */
+.cartoes {
+  display: flex; /* Ativa o layout Flexbox */
+  flex-wrap: wrap; /* Permite que os cartões passem para outra linha */
+  gap: var(--espaco); /* Define o espaçamento entre os cartões */
+  margin: 0; /* Remove a margem padrão da lista */
+  padding: 0; /* Remove o espaçamento interno padrão da lista */
+  list-style: none; /* Remove os marcadores da lista */
+}
+
+/* Define a aparência de cada cartão da lista */
+.cartoes li {
+  flex: 1 1 220px; /* Permite crescer e encolher, com largura inicial de 220px */
+  padding: var(--espaco); /* Adiciona espaçamento interno */
+  border: 1px solid var(--cor-linha); /* Adiciona uma borda discreta */
+  border-radius: 8px; /* Arredonda os cantos do cartão */
+}
+
+/* Define o espaçamento dos títulos dentro dos cartões */
+.cartoes h3 {
+  margin: 0 0 8px; /* Remove as margens superior e laterais e mantém espaço abaixo */
+}
+
+/* Remove as margens dos parágrafos dentro dos cartões */
+.cartoes p {
+  margin: 0; /* Remove todas as margens externas do parágrafo */
+}
+
+/* Define a largura e o comportamento geral da tabela */
+table {
+  width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+  border-collapse: collapse; /* Junta as bordas das células */
+}
+
+/* Define a aparência da legenda da tabela */
+caption {
+  margin-bottom: 8px; /* Adiciona espaço abaixo da legenda */
+  font-weight: bold; /* Destaca a legenda com negrito */
+  text-align: left; /* Alinha a legenda à esquerda */
+}
+
+/* Define o espaçamento e o alinhamento das células da tabela */
+th,
+td {
+  padding: 12px; /* Adiciona espaçamento interno às células */
+  border-bottom: 1px solid var(--cor-linha); /* Adiciona uma linha inferior divisória */
+  text-align: left; /* Alinha o conteúdo das células à esquerda */
+}
+
+/* Destaca o cabeçalho da tabela */
+thead th {
+  background: var(--cor-primaria); /* Define o fundo do cabeçalho */
+  color: white; /* Define a cor do texto como branca */
+}
+
+/* Aplica uma cor de fundo alternada às linhas pares da tabela */
+tbody tr:nth-child(even) {
+  background: var(
+    --cor-fundo
+  ); /* Destaca as linhas pares para facilitar a leitura */
+}
+
+/* Define a aparência do contêiner do formulário */
+.formulario {
+  padding: 24px; /* Adiciona espaçamento interno */
+  background: var(--cor-card); /* Define o fundo branco do formulário */
+  border-radius: var(--raio); /* Arredonda os cantos do contêiner */
+}
+
+/* Define o espaçamento e a borda dos grupos de campos */
+fieldset {
+  margin: 0 0 24px; /* Adiciona espaço abaixo de cada grupo */
+  padding: var(--espaco); /* Adiciona espaçamento interno */
+  border: 1px solid var(--cor-linha); /* Define a borda do grupo */
+  border-radius: 8px; /* Arredonda os cantos do grupo */
+}
+
+/* Define a aparência dos títulos dos grupos de campos */
+legend {
+  padding: 0 8px; /* Adiciona espaçamento lateral ao título */
+  font-weight: bold; /* Destaca o título com negrito */
+  color: var(--cor-primaria); /* Aplica a cor principal ao título */
+}
+
+/* Define a aparência dos rótulos dos campos */
+label {
+  display: block; /* Faz cada rótulo ocupar sua própria linha */
+  margin: 12px 0 4px; /* Define as margens superior e inferior */
+  font-weight: bold; /* Destaca o texto do rótulo */
+}
+
+/* Define a aparência dos campos de entrada e seleção */
+input,
+select,
+textarea {
+  width: 100%; /* Faz os campos ocuparem toda a largura disponível */
+  padding: 10px 12px; /* Adiciona espaçamento interno */
+  border: 1px solid var(--cor-suave); /* Define a borda dos campos */
+  border-radius: 6px; /* Arredonda os cantos dos campos */
+  font-family: inherit; /* Herda a fonte do elemento pai */
+  font-size: 16px; /* Define o tamanho da fonte dos campos */
+}
+
+/* Organiza as opções, como caixas de seleção e botões de rádio */
+.opcao {
+  display: flex; /* Organiza os elementos lado a lado */
+  align-items: center; /* Alinha verticalmente os elementos ao centro */
+  gap: 8px; /* Define o espaço entre os elementos */
+  margin: 8px 0; /* Adiciona espaçamento vertical */
+}
+
+/* Evita que os campos das opções ocupem toda a largura */
+.opcao input {
+  width: auto; /* Permite que o campo mantenha sua largura natural */
+}
+
+/* Ajusta a exibição dos rótulos das opções */
+.opcao label {
+  display: inline; /* Permite que o rótulo ocupe apenas o espaço necessário */
+  margin: 0; /* Remove as margens padrão do rótulo */
+  font-weight: normal; /* Remove o negrito do rótulo */
+}
+
+/* Remove os marcadores e o espaçamento padrão da lista de contatos */
+.contatos {
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0; /* Remove o espaçamento interno */
+}
+
+/* Adiciona espaçamento entre os itens da lista de contatos */
+.contatos li {
+  margin-bottom: 12px; /* Separa verticalmente os contatos */
+}
+
+/* Define a aparência dos links de contato */
+.contatos a {
+  display: block; /* Faz o link ocupar toda a largura disponível */
+  padding: var(--espaco); /* Adiciona espaçamento interno */
+  background: white; /* Define o fundo branco */
+  color: #1f4e78; /* Define a cor do texto do link */
+  font-weight: bold; /* Destaca o texto com negrito */
+  text-decoration: none; /* Remove o sublinhado */
+  border: 2px solid var(--cor-primaria); /* Adiciona uma borda na cor principal */
+  border-radius: 8px; /* Arredonda os cantos do link */
+}
+
+/* Altera as cores dos links de contato ao passar o mouse */
+.contatos a:hover {
+  background: var(--cor-primaria); /* Aplica a cor principal ao fundo */
+  color: white; /* Altera a cor do texto para branco */
+}
+
+/* Define a aparência dos conteúdos incorporados por meio de iframe */
+iframe {
+  width: 100%; /* Faz o iframe ocupar toda a largura disponível */
+  border: 0; /* Remove a borda padrão */
+  border-radius: 8px; /* Arredonda os cantos do iframe */
+}
+
+/* Define a aparência geral do rodapé */
+.rodape {
+  padding: 24px; /* Adiciona espaçamento interno */
+  background: var(--cor-texto); /* Utiliza a cor padrão do texto como fundo */
+  color: white; /* Define a cor dos textos como branca */
+  text-align: center; /* Centraliza o conteúdo do rodapé */
+}
+
+/* Ajusta o espaçamento dos parágrafos dentro do rodapé */
+.rodape p {
+  margin: 4px 0; /* Define margens verticais pequenas e remove as laterais */
+}
