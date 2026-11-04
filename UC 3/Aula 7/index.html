@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vitrine de Produtos</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f2f4f8;
+        color: #263238;
+      }
+
+      .topo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        background: #1f4e78;
+      }
+
+      .logo {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      .menu {
+        display: flex;
+        gap: 16px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .vitrine {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: #fff;
+        padding: 16px;
+        border-radius: 10px;
+      }
+
+      .foto {
+        height: 120px;
+        background: #cfd8dc;
+        border-radius: 6px;
+      }
+
+      .card h3 {
+        margin: 0;
+      }
+
+      .preco {
+        color: #1f4e78;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .card button {
+        margin-top: auto; /* empurra o botão para baixo */
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background: #f5b82e;
+        cursor: pointer;
+      }
+
+      .destaque {
+        grid-column: span 2;
+      }
+
+      .rodape {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px 24px;
+        background: #263238;
+        color: #fff;
+      }
+
+      /* a partir de 768px (tablet por diante) */
+      @media (min-width: 768px) {
+        .rodape {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topo">
+      <span class="logo">Pidelzinho</span>
+      <nav aria-label="Menu Principal">
+        <ul class="menu">
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Produtos</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="vitrine">
+      <article class="card destaque">
+        <div class="foto"></div>
+        <h3>Notebook Gamer</h3>
+        <p>Oferta da semana: RTX, 100GB de RAM, 100TB de Armazenamento</p>
+        <span class="preco">R$ 100.000,00</span>
+        <button>Comprar</button>
+      </article>
+
+      <article class="card">
+        <div class="foto"></div>
+        <h3>Mouse sem fio</h3>
+        <span class="preco">R$ 89,90</span>
+        <button>Comprar</button>
+      </article>
+
+      <article class="card">
+        <div class="foto"></div>
+        <h3>Teclado Mecânico</h3>
+        <span class="preco">R$ 150,00</span>
+        <button>Comprar</button>
+      </article>
+
+      <article class="card">
+        <div class="foto"></div>
+        <h3>Monitor 24"</h3>
+        <span class="preco">R$ 800,00</span>
+        <button>Comprar</button>
+      </article>
+
+      <article class="card">
+        <div class="foto"></div>
+        <h3>Headset</h3>
+        <span class="preco">R$ 250,00</span>
+        <button>Comprar</button>
+      </article>
+    </main>
+
+    <footer class="rodape">
+      <span>Pidelzinho - Centro | Caruaru - PE</span>
+      <span>Domingo à Domingo, 8h às 23:59h</span>
+      <span>(81) 94002-8922</span>
+    </footer>
+  </body>
+</html>
