@@ -1,0 +1,13 @@
+.paragrafoCor {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+}
+
+.paragrafoCor.vermelha {
+  color: red;
+}
+
+.paragrafoCor.amarela {
+  color: yellow;
+}
