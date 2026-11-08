@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08 · Grid</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);  /* 3 colunas de tamanhos iguais */
+      gap: 12px;
+    }
+    .destaque { grid-column: span 2; }         /* ocupa 2 colunas */
+
+    /* Galeria responsiva SEM media query */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .galeria div { height: 120px; background: #cfd8dc; border-radius: 8px; display: grid; place-items: center; }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>Grid: linhas e colunas</h1>
+    <p class="dica">Pense num tabuleiro ou numa planilha. <code>1fr</code> é uma fatia do espaço que sobra: 3 colunas de 1fr = 3 fatias iguais.</p>
+    <div class="tabuleiro">
+      <div class="caixa a destaque">1 (span 2)</div>
+      <div class="caixa b">2</div>
+      <div class="caixa c">3</div>
+      <div class="caixa d">4</div>
+      <div class="caixa a">5</div>
+    </div>
+
+    <h2>Galeria que se ajusta sozinha</h2>
+    <p class="dica">Diminua a janela: as colunas caem sozinhas, sem nenhuma media query.</p>
+    <div class="galeria">
+      <div>Produto 1</div><div>Produto 2</div><div>Produto 3</div>
+      <div>Produto 4</div><div>Produto 5</div><div>Produto 6</div>
+    </div>
+  </main>
+</body>
+</html>

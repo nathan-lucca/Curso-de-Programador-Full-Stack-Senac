@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 · static e relative</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .caixa { margin-bottom: 8px; }
+
+    /* EXPERIMENTE: mude os valores de top e left */
+    .movida {
+      position: relative;
+      top: 20px;   /* desce 20px a partir de onde estava */
+      left: 60px;  /* vai 60px para a direita */
+    }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>static e relative</h1>
+    <p class="dica">static é o padrão: cada caixa fica no seu lugar, uma depois da outra, como numa fila. <code>top</code> e <code>left</code> não funcionam com static.</p>
+
+    <div class="caixa a">Caixa A (static)</div>
+    <div class="caixa b movida">Caixa B (relative, top: 20px, left: 60px)</div>
+    <div class="caixa c">Caixa C (static)</div>
+
+    <p class="dica">Repare: a Caixa B saiu do lugar, mas a Caixa C <strong>não subiu</strong>. O espaço da B continua reservado, como uma cadeira com a bolsa em cima.</p>
+    <p>Teste: troque <code>position: relative</code> por <code>position: static</code> e veja o top e o left pararem de funcionar.</p>
+  </main>
+</body>
+</html>

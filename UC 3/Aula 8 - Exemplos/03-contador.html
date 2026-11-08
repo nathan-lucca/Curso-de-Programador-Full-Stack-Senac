@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 · Eventos: contador</title>
+  <link rel="stylesheet" href="base.css">
+  <style> #numero { font-size: 4rem; font-weight: bold; color: #1f4e78; margin: 16px 0; } .acoes { display: flex; gap: 8px; } </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>Contador de clientes</h1>
+    <p class="dica">Evento é uma campainha: <code>addEventListener</code> diz “quando tocarem (clicarem), faça isto”.</p>
+    <p id="numero" aria-live="polite">0</p>
+    <div class="acoes">
+      <button id="menos">− 1</button>
+      <button id="mais">+ 1</button>
+      <button id="zerar">Zerar</button>
+    </div>
+  </main>
+
+  <script>
+    let contador = 0;                                  // 1. o dado
+    const numero = document.querySelector('#numero');  // 2. onde mostrar
+
+    function mostrar() {                               // 3. atualiza a tela
+      numero.textContent = contador;
+    }
+
+    document.querySelector('#mais').addEventListener('click', () => {
+      contador = contador + 1;
+      mostrar();
+    });
+    document.querySelector('#menos').addEventListener('click', () => {
+      if (contador > 0) contador = contador - 1;       // não deixa ficar negativo
+      mostrar();
+    });
+    document.querySelector('#zerar').addEventListener('click', () => {
+      contador = 0;
+      mostrar();
+    });
+    // EXPERIMENTE: faça o número ficar vermelho quando passar de 10.
+  </script>
+</body>
+</html>

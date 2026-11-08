@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 · Flexbox básico</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .fila {
+      display: flex;               /* o PAI vira flex: os filhos entram em fila */
+      flex-direction: row;         /* EXPERIMENTE: column */
+      justify-content: flex-start; /* EXPERIMENTE: center, flex-end, space-between, space-around, space-evenly */
+      align-items: stretch;        /* EXPERIMENTE: flex-start, center, flex-end */
+      gap: 12px;                   /* espaço entre os filhos */
+      height: 220px;
+      background: #fff;
+      border: 2px dashed #90a4ae;
+      padding: 12px;
+    }
+    .b { padding-top: 40px; }      /* a caixa B é mais alta, para ver o align-items */
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>Flexbox: o pai organiza os filhos</h1>
+    <p class="dica">Mude os valores no CSS, salve e veja o que acontece. <strong>justify-content</strong> mexe no eixo principal (na linha); <strong>align-items</strong> mexe no eixo cruzado (na altura).</p>
+    <div class="fila">
+      <div class="caixa a">A</div>
+      <div class="caixa b">B</div>
+      <div class="caixa c">C</div>
+    </div>
+  </main>
+</body>
+</html>

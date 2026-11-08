@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 · Centralizar qualquer coisa</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .banner {
+      display: flex;
+      justify-content: center;  /* centro na horizontal */
+      align-items: center;      /* centro na vertical */
+      height: 260px;
+      background: #1f4e78;
+      border-radius: 10px;
+    }
+    .banner p { color: #fff; font-size: 1.5rem; font-weight: bold; margin: 0; }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>O truque mais usado do Flexbox</h1>
+    <p class="dica">Três linhas centralizam qualquer coisa: <code>display: flex; justify-content: center; align-items: center;</code></p>
+    <div class="banner"><p>Estou no centro!</p></div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Aula 26 · JavaScript no navegador: DOM e eventos
+
+1. Abra esta pasta no VS Code (Arquivo > Abrir pasta).
+2. Abra cada arquivo com o Live Server, na ordem: 01, 02, 03...
+3. Deixe o F12 aberto na aba Console: os erros de JavaScript aparecem lá, em vermelho.
+4. Leia a caixa amarela e mexa no código do <script>.

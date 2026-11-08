@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 · Cardápio base (atividade completa)</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .topo { display: flex; justify-content: space-between; align-items: center; }
+    .carrinho { background: #fff; padding: 8px 14px; border-radius: 20px; font-weight: bold; }
+    .filtros { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .pratos { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .card { display: flex; flex-direction: column; gap: 6px; background: #fff; padding: 16px; border-radius: 8px; }
+    .card button { margin-top: auto; }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <div class="topo">
+      <h1>Sabor do Agreste</h1>
+      <p class="carrinho">🛒 <span id="qtd">0</span> itens · R$ <span id="total">0,00</span></p>
+    </div>
+    <p id="aviso" aria-live="polite"></p>
+
+    <div class="filtros">
+      <button data-filtro="todos">Todos</button>
+      <button data-filtro="lanche">Lanches</button>
+      <button data-filtro="bebida">Bebidas</button>
+      <button data-filtro="sobremesa">Sobremesas</button>
+    </div>
+
+    <div class="pratos">
+      <article class="card" data-categoria="lanche" data-nome="X-Tudo" data-preco="18">
+        <h2>X-Tudo</h2><p>R$ 18,00</p><button class="adicionar">Adicionar</button>
+      </article>
+      <article class="card" data-categoria="lanche" data-nome="Coxinha" data-preco="6.5">
+        <h2>Coxinha</h2><p>R$ 6,50</p><button class="adicionar">Adicionar</button>
+      </article>
+      <article class="card" data-categoria="bebida" data-nome="Suco de caju" data-preco="7">
+        <h2>Suco de caju</h2><p>R$ 7,00</p><button class="adicionar">Adicionar</button>
+      </article>
+      <article class="card" data-categoria="bebida" data-nome="Refrigerante" data-preco="5">
+        <h2>Refrigerante</h2><p>R$ 5,00</p><button class="adicionar">Adicionar</button>
+      </article>
+      <article class="card" data-categoria="sobremesa" data-nome="Bolo de rolo" data-preco="9">
+        <h2>Bolo de rolo</h2><p>R$ 9,00</p><button class="adicionar">Adicionar</button>
+      </article>
+      <article class="card" data-categoria="sobremesa" data-nome="Cocada" data-preco="4">
+        <h2>Cocada</h2><p>R$ 4,00</p><button class="adicionar">Adicionar</button>
+      </article>
+    </div>
+
+    <h2>Seu pedido</h2>
+    <ul id="pedido"></ul>
+    <button id="limpar">Limpar pedido</button>
+  </main>
+
+  <script>
+    // ATIVIDADE COMPLETA: escreva o seu JavaScript aqui.
+    // Veja os passos no slide "O cardápio ganha vida".
+  </script>
+</body>
+</html>

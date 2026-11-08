@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 · z-index</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .mesa { position: relative; height: 260px; }
+    .folha { position: absolute; width: 180px; height: 140px; }
+    .f1 { top: 0;    left: 0;    z-index: 1; }
+    .f2 { top: 40px; left: 60px; z-index: 2; }
+    .f3 { top: 80px; left: 120px; z-index: 3; }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>z-index: quem fica por cima</h1>
+    <p class="dica">Pense em folhas empilhadas na mesa: o maior z-index fica em cima. Só funciona em elementos com position diferente de static.</p>
+    <div class="mesa">
+      <div class="caixa a folha f1">z-index: 1</div>
+      <div class="caixa b folha f2">z-index: 2</div>
+      <div class="caixa c folha f3">z-index: 3</div>
+    </div>
+    <p>Experimente: dê <code>z-index: 5</code> para a <code>.f1</code>. A azul passa para cima de todas.</p>
+  </main>
+</body>
+</html>

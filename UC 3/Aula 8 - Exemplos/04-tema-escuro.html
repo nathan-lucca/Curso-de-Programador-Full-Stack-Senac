@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 · classList.toggle: tema escuro</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body.escuro { background: #111a2e; color: #f4f6fa; }
+    body.escuro h1 { color: #f5b82e; }
+    .menu { display: none; background: #fff; padding: 12px; border-radius: 8px; margin-top: 12px; }
+    .menu.aberto { display: block; }
+    body.escuro .menu { background: #1a2946; }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>Liga e desliga com classList.toggle</h1>
+    <p class="dica">toggle é um interruptor: se a classe não está lá, coloca; se está, tira. O visual fica todo no CSS.</p>
+    <button id="tema">Alternar tema</button>
+    <button id="abrir" aria-expanded="false" aria-controls="menu">Abrir menu ☰</button>
+    <nav class="menu" id="menu" aria-label="Menu">Início · Serviços · Contato</nav>
+  </main>
+
+  <script>
+    document.querySelector('#tema').addEventListener('click', () => {
+      document.body.classList.toggle('escuro');
+    });
+
+    const botao = document.querySelector('#abrir');
+    const menu = document.querySelector('#menu');
+    botao.addEventListener('click', () => {
+      const abriu = menu.classList.toggle('aberto');   // toggle devolve true se colocou
+      botao.setAttribute('aria-expanded', abriu);      // avisa o leitor de tela
+    });
+  </script>
+</body>
+</html>

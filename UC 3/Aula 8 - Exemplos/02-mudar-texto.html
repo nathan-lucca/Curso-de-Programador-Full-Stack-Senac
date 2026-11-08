@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 · Mudar a página com o DOM</title>
+  <link rel="stylesheet" href="base.css">
+  <style> .destaque { background: #f5b82e; padding: 4px 8px; border-radius: 4px; } </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1 id="titulo">Título original</h1>
+    <p class="mensagem">Este parágrafo vai mudar.</p>
+    <ul>
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item">Item 3</li>
+    </ul>
+    <p class="dica">O JavaScript abaixo procura elementos e muda a página. Comente uma linha (com //), salve e veja o que deixa de acontecer.</p>
+  </main>
+
+  <script>
+    // 1. Procurar UM elemento (o primeiro que combinar com o seletor CSS)
+    const titulo = document.querySelector('#titulo');
+    titulo.textContent = 'Título mudado pelo JavaScript!';
+
+    // 2. Mudar o estilo
+    titulo.style.color = '#e07a2e';
+
+    // 3. Adicionar uma classe do CSS
+    const mensagem = document.querySelector('.mensagem');
+    mensagem.classList.add('destaque');
+
+    // 4. Procurar TODOS e percorrer
+    const itens = document.querySelectorAll('.item');
+    itens.forEach((li, i) => {
+      li.textContent = `Produto número ${i + 1}`;
+    });
+  </script>
+</body>
+</html>

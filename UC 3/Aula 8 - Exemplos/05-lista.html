@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 · Criar elementos: lista de tarefas</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    form { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+    #lista { padding-left: 20px; } #lista li { margin: 6px 0; cursor: pointer; }
+    .feita { text-decoration: line-through; color: #90a4ae; }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <h1>Tarefas do PI</h1>
+    <p class="dica">Ler o que a pessoa digitou (<code>.value</code>), criar um elemento novo (<code>createElement</code>) e colocar na página (<code>append</code>). Clique numa tarefa para marcar como feita.</p>
+    <form id="form">
+      <div>
+        <label for="tarefa">Nova tarefa</label>
+        <input id="tarefa" type="text" required>
+      </div>
+      <button type="submit">Adicionar</button>
+    </form>
+    <ul id="lista"></ul>
+  </main>
+
+  <script>
+    const form = document.querySelector('#form');
+    const campo = document.querySelector('#tarefa');
+    const lista = document.querySelector('#lista');
+
+    form.addEventListener('submit', (evento) => {
+      evento.preventDefault();                 // não recarrega a página
+      const texto = campo.value.trim();        // o que foi digitado
+      if (texto === '') return;
+
+      const li = document.createElement('li'); // cria <li>
+      li.textContent = texto;
+      li.addEventListener('click', () => li.classList.toggle('feita'));
+      lista.append(li);                        // coloca na página
+
+      campo.value = '';                        // limpa o campo
+      campo.focus();
+    });
+  </script>
+</body>
+</html>

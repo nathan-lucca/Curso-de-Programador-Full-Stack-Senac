@@ -1,0 +1,11 @@
+/* Estilo comum a todos os exemplos (não precisa mexer aqui) */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.5; color: #263238; background: #f2f4f8; }
+.pagina { max-width: 900px; margin: 0 auto; padding: 24px 16px 80px; }
+h1 { color: #1f4e78; margin-top: 0; }
+h2 { color: #1f4e78; margin: 32px 0 8px; }
+.dica { background: #fff8e1; border-left: 4px solid #f5b82e; padding: 8px 12px; margin: 8px 0 16px; }
+code { background: #e3e8ef; padding: 1px 5px; border-radius: 4px; }
+.caixa { padding: 16px; color: #fff; font-weight: bold; border-radius: 8px; }
+.a { background: #1f4e78; } .b { background: #e07a2e; } .c { background: #2e8b57; } .d { background: #8e44ad; }
+.texto { background: #fff; padding: 12px; border-radius: 8px; }

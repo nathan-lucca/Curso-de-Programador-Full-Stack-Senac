@@ -1,0 +1,6 @@
+Aula 25 · Exemplos de position, Flexbox e Grid
+
+1. Abra esta pasta no VS Code (Arquivo > Abrir pasta).
+2. Abra cada arquivo com o Live Server, na ordem: 01, 02, 03...
+3. Leia a caixa amarela de cada página e faça o "Experimente".
+4. Mude os valores no CSS, salve e veja o resultado no navegador.
