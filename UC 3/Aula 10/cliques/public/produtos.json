@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nome": "Teclado Mecânico",
+    "preco": 189.9,
+    "categoria": "Periféricos",
+    "novo": true
+  },
+  {
+    "id": 2,
+    "nome": "Monitor Samsung 30'",
+    "preco": 1299.90,
+    "categoria": "Monitores",
+    "novo": false
+  },
+  {
+    "id": 3,
+    "nome": "Mouse Redragon",
+    "preco": 89.90,
+    "categoria": "Periféricos",
+    "novo": true
+  }
+]
