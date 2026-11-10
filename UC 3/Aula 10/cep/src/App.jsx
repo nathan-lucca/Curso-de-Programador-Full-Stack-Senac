@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 const ENDERECO_VAZIO = { rua: "", bairro: "", cidade: "", uf: "" };
 
@@ -75,7 +76,7 @@ function App() {
     <main className="pagina">
       <h1>Cadastro de Clientes</h1>
 
-      <form className="form" onSubmit={salvar}>
+      <form className="formulario" onSubmit={salvar}>
         <label htmlFor="nome">Nome</label>
         <input
           id="nome"
@@ -118,7 +119,41 @@ function App() {
           value={endereco.cidade}
           onChange={(e) => setEndereco({ ...endereco, cidade: e.target.value })}
         ></input>
+
+        <label htmlFor="uf">Estado</label>
+        <select
+          name="uf"
+          id="uf"
+          onChange={(e) => setEndereco({ ...endereco, uf: e.target.value })}
+          value={endereco.uf}
+        >
+          <option value="">Selecione a UF</option>
+          {estados.map((est) => (
+            <option key={est.id} value={est.sigla}>
+              {est.nome}
+            </option>
+          ))}
+        </select>
+
+        {erro && (
+          <p className="erro" role="alert">
+            {erro}
+          </p>
+        )}
+
+        <button type="submit">Salvar cliente</button>
       </form>
+
+      <h2>Clientes cadastrados ({clientes.length})</h2>
+      {clientes.length === 0 && <p>Não há clientes cadastrados.</p>}
+
+      <ul className="lista">
+        {clientes.map((c, i) => (
+          <li key={i}>
+            <strong>{c.nome}</strong> | {c.rua}, {c.bairro} - {c.cidade}/{c.uf}
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
