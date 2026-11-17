@@ -32,4 +32,8 @@ export class Catalogo {
   disponiveis() {
     return this.produtos.filter((p) => p.estaDisponivel());
   }
+
+  buscarPorCategoria(categoria) {
+    return this.produtos.filter((p) => p.categoria.toLowerCase() === categoria.toLowerCase());
+  }
 }
