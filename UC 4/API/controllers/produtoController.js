@@ -1,23 +1,12 @@
-import express from "express";
-import { Catalogo } from "./models/Catalogo.js";
-
-const app = express();
-const PORTA = 3000;
-
-app.use(express.json()); // permite ler o conteúdo do req.body
+import { Catalogo } from "../models/Catalogo.js";
 
 // criar um novo catálogo
 const catalogo = new Catalogo();
 catalogo.adicionar("X-Tudo", 39.9, "Hamburguer", 10);
 catalogo.adicionar("Coxinha", 19.9, "Salgados", 0);
 
-// método GET - http://localhost:3000/
-app.get("/", (req, res) => {
-  res.send("API do Cardápio funcionando!");
-});
-
-// rota para listar produtos ou buscar pela categoria
-app.get("/produtos", (req, res) => {
+// função de listar todos os produtos ou por categoria
+export function listar(req, res) {
   const { categoria } = req.query; // const categoria = req.query.categoria
 
   // se tiver a query ?categoria
@@ -34,15 +23,15 @@ app.get("/produtos", (req, res) => {
   }
 
   res.json(catalogo.listar());
-});
+}
 
-// rota de listar produtos disponíveis - http://localhost:3000/produtos/disponiveis
-app.get("/produtos/disponiveis", (req, res) => {
+// função para listar produtos disponíveis
+export function disponiveis(req, res) {
   res.json(catalogo.disponiveis());
-});
+}
 
-// rota para buscar produto pelo id - http://localhost:3000/produtos/6
-app.get("/produtos/:id", (req, res) => {
+// função para buscar produto por ID
+export function buscarPorId(req, res) {
   const produto = catalogo.buscarPorId(Number(req.params.id));
 
   if (!produto) {
@@ -51,14 +40,22 @@ app.get("/produtos/:id", (req, res) => {
   }
 
   res.json(produto);
-});
+}
 
-// método POST - http://localhost:3000/produtos/1/desconto
-// body:
-// {
-//  "percentual": 50
-// }
-app.post("/produtos/:id/desconto", (req, res) => {
+// função de cadastrar produto
+export function cadastrar(req, res) {
+  const { nome, preco, categoria, estoque } = req.body;
+
+  try {
+    const produto = catalogo.adicionar(nome, preco, categoria, estoque);
+    res.status(201).json(produto);
+  } catch (erro) {
+    res.status(400).json({ erro: erro.message });
+  }
+}
+
+// função de aplicar desconto
+export function aplicarDesconto(req, res) {
   const produto = catalogo.buscarPorId(Number(req.params.id));
   if (!produto) {
     return res.status(404).json({ erro: "Produto não encontrado!" });
@@ -70,14 +67,10 @@ app.post("/produtos/:id/desconto", (req, res) => {
   } catch (erro) {
     res.status(400).json({ erro: erro.message });
   }
-});
+}
 
-// rota para vender um produto http://localhost:3000/produtos/1/vender
-// body:
-// {
-//  "quantidade": 50
-// }
-app.post("/produtos/:id/vender", (req, res) => {
+// função de vender
+export function vender(req, res) {
   const produto = catalogo.buscarPorId(Number(req.params.id));
   if (!produto) {
     return res.status(404).json({ erro: "Produto não encontrado!" });
@@ -89,28 +82,24 @@ app.post("/produtos/:id/vender", (req, res) => {
   } catch (erro) {
     res.status(400).json({ erro: erro.message });
   }
-});
+}
 
-// cadastrar produto http://localhost:3000/produtos/
-// body:
-// {
-//  "nome": "nome do produto"
-//  "preco": preço do produto
-//  "categoria": "categoria do produto"
-//  "estoque": estoque do produto
-// }
-app.post("/produtos", (req, res) => {
-  const { nome, preco, categoria, estoque } = req.body;
+// função de repor estoque
+export function repor(req, res) {
+  const produto = catalogo.buscarPorId(Number(req.params.id));
+  if (!produto) {
+    return res.status(404).json({ erro: "Produto não encontrado!" });
+  }
 
   try {
-    const produto = catalogo.adicionar(nome, preco, categoria, estoque);
-    res.status(201).json(produto);
+    produto.repor(req.body.quantidade);
+    res.json(produto);
   } catch (erro) {
     res.status(400).json({ erro: erro.message });
   }
-});
+}
 
-// ligando nosso servidor
-app.listen(PORTA, () => {
-  console.log(`Servidor rodando na URL: http://localhost:${PORTA}`);
-});
+// função para listar categorias
+export function categorias(req, res) {
+  res.json(catalogo.categorias());
+}

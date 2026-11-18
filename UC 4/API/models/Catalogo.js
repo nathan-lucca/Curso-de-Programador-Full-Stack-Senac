@@ -36,4 +36,9 @@ export class Catalogo {
   buscarPorCategoria(categoria) {
     return this.produtos.filter((p) => p.categoria.toLowerCase() === categoria.toLowerCase());
   }
+
+  categorias() {
+    const nomes = this.produtos.map((p) => p.categoria);
+    return [...new Set(nomes)]; // Set remove as categorias duplicadas
+  }
 }
