@@ -16,21 +16,21 @@ app.get("/", (req, res) => {
   res.send("API do Cardápio funcionando!");
 });
 
-// rota para buscar produto pela categoria
+// rota para listar produtos ou buscar pela categoria
 app.get("/produtos", (req, res) => {
   const { categoria } = req.query; // const categoria = req.query.categoria
 
   // se tiver a query ?categoria
   if (categoria) {
-    const produto = catalogo.buscarPorCategoria(categoria);
+    const produtos = catalogo.buscarPorCategoria(categoria);
 
-    if (!produto.length) {
+    if (!produtos.length) {
       return res
         .status(404)
-        .json({ erro: `Produtos da categoria ${categoria} não encontrado!` });
+        .json({ erro: `Nenhum produto da categoria ${categoria} encontrado!` });
     }
 
-    res.json(produto);
+    return res.json(produtos); // ✅ return aqui
   }
 
   res.json(catalogo.listar());
