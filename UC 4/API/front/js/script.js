@@ -1,5 +1,10 @@
 const API = "http://localhost:3000";
 const msg = document.querySelector("#msg");
+const form = document.querySelector("#form");
+
+// quando for null = cadastrando um novo produto | quando tiver um número
+// quer dizer que estamos editando um produto
+let editandoId = null;
 
 function mostrarMensagem(texto, tipo) {
   msg.textContent = texto;
@@ -29,7 +34,17 @@ async function carregar() {
     botao.textContent = "Vender 1";
     botao.addEventListener("click", () => vender(p.id));
 
-    li.appendChild(botao);
+    // botão EDITAR: PUT /produtos/:id
+    const botaoEditar = document.createElement("button");
+    botaoEditar.textContent = "Editar";
+    botaoEditar.addEventListener("click", () => comecarEdicao(p));
+
+    // botão EXCLUIR: DELETE /produtos/:id
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.textContent = "Excluir";
+    botaoExcluir.addEventListener("click", () => excluir(p.id, p.nome));
+
+    li.append(botao, botaoEditar, botaoExcluir);
     lista.appendChild(li);
   });
 }
@@ -51,6 +66,33 @@ async function vender(id) {
   mostrarMensagem(`Vendido: ${dados.nome}`, "ok");
   carregar();
 }
+
+// função de editar produto
+function comecarEdicao(produto) {
+  editandoId = produto.id;
+  document.querySelector("#nome").value = produto.nome;
+  document.querySelector("#preco").value = produto.preco;
+  document.querySelector("#categoria").value = produto.categoria;
+  document.querySelector("#estoque").value = produto.estoque;
+
+  document.querySelector("#tituloForm").textContent =
+    `Editando: ${produto.nome}`;
+  document.querySelector("#botaoSalvar").textContent = "Salvar alteração";
+  document.querySelector("#botaoCancelar").hidden = false;
+}
+
+// função de cancelar edição
+function cancelarEdicao() {
+  editandoId = null;
+  form.reset();
+  document.querySelector("#tituloForm").textContent = "Novo Produto";
+  document.querySelector("#botaoSalvar").textContent = "Cadastrar";
+  document.querySelector("#botaoCancelar").hidden = true;
+}
+
+document
+  .querySelector("#botaoCancelar")
+  .addEventListener("click", cancelarEdicao);
 
 // quando trocar o filtro do select, fazer a busca novamente
 document.querySelector("#filtro").addEventListener("change", carregar);

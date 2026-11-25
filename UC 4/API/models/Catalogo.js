@@ -34,7 +34,9 @@ export class Catalogo {
   }
 
   buscarPorCategoria(categoria) {
-    return this.produtos.filter((p) => p.categoria.toLowerCase() === categoria.toLowerCase());
+    return this.produtos.filter(
+      (p) => p.categoria.toLowerCase() === categoria.toLowerCase(),
+    );
   }
 
   categorias() {

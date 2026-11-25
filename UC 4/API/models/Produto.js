@@ -1,24 +1,7 @@
-export class Produto {
-  constructor(id, nome, preco, categoria, estoque = 0) {
-    if (!nome) {
-      throw new Error("O nome é obrigatório!");
-    }
+import { DataTypes, Model } from "sequelize";
+import { sequelize } from "../config/database.js";
 
-    if (typeof preco !== "number" || preco <= 0) {
-      throw new Error("O preço precisa ser um número e maior que 0!");
-    }
-
-    if (!categoria) {
-      throw new Error("A categoria é obrigatória!");
-    }
-
-    this.id = id;
-    this.nome = nome;
-    this.preco = preco;
-    this.categoria = categoria;
-    this.estoque = estoque;
-  }
-
+export class Produto extends Model {
   vender(quantidade) {
     if (quantidade > this.estoque) {
       throw new Error(
@@ -49,3 +32,38 @@ export class Produto {
     this.estoque = this.estoque + quantidade;
   }
 }
+
+Produto.init(
+  {
+    nome: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      validate: {
+        notNull: { msg: "O nome é obrigatório." },
+        notEmpty: { msg: "O nome é obrigatório." },
+      },
+    },
+    preco: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      validate: {
+        notNull: { msg: "O preço é obrigatório." },
+        min: { args: [0.01], msg: "O preço precisa ser maior que 0." },
+      },
+    },
+    categoria: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    estoque: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
+  },
+  {
+    sequelize,
+    tableName: "produtos", // nome da tabela
+    timestamps: false, // a tabela não tem createdAt/updatedAt
+  },
+);
