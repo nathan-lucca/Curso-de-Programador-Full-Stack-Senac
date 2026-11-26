@@ -97,4 +97,52 @@ document
 // quando trocar o filtro do select, fazer a busca novamente
 document.querySelector("#filtro").addEventListener("change", carregar);
 
+// evento de cadastrar/atualizar produto
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const dadosForms = {
+    nome: document.querySelector("#nome").value,
+    preco: Number(document.querySelector("#preco").value),
+    categoria: document.querySelector("#categoria").value,
+    estoque: Number(document.querySelector("#estoque").value),
+  };
+
+  // se está editando -> PUT /produtos/:id | senão -> POST /produtos
+  const url = editandoId ? `${API}/produtos/${editandoId}` : `${API}/produtos`;
+  const metodo = editandoId ? "PUT" : "POST";
+
+  const resposta = await fetch(url, {
+    method: metodo,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dadosForms),
+  });
+  const dados = await resposta.json();
+
+  if (!resposta.ok) {
+    return mostrarMensagem(dados.erro, "erro");
+  }
+
+  const acao = editandoId ? "atualizado" : "cadastrado";
+  mostrarMensagem(`${dados.nome} ${acao}!`, "ok");
+  cancelarEdicao();
+  carregar();
+});
+
+// função de excluir produto
+async function excluir(id, nome) {
+  if (!confirm(`Excluir ${nome}?`)) return; // usuário clica em "Cancelar"
+
+  const resposta = await fetch(`${API}/produtos/${id}`, { method: "DELETE" });
+
+  if (!resposta.ok) {
+    const dados = await resposta.json();
+    return mostrarMensagem(dados.erro, "erro");
+  }
+
+  mostrarMensagem(`${nome} excluído!`, "ok");
+  if (editandoId === id) cancelarEdicao();
+  carregar();
+}
+
 carregar(); // carregar ao abrir a página
