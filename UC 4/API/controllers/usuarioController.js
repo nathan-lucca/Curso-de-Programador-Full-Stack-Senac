@@ -12,8 +12,9 @@ export async function cadastrar(req, res) {
   }
 
   try {
-    const hash = await bcrypt.hash(senha, 10);
+    const hash = await bcrypt.hash(senha, 10); // embaralha a senha
     const usuario = await Usuario.create({ nome, email, senha: hash });
+    // nunca devolve a senha (nem o hash)
     res
       .status(201)
       .json({ id: usuario.id, nome: usuario.nome, email: usuario.email });
@@ -21,4 +22,45 @@ export async function cadastrar(req, res) {
     const mensagem = erro.errors ? erro.errors[0].message : erro.message;
     res.status(400).json({ erro: mensagem });
   }
+}
+
+// POST /login
+export async function login(req, res) {
+  const { email, senha } = req.body;
+
+  const usuario = await Usuario.findOne({ where: { email } });
+  const senhaCerta =
+    usuario && (await bcrypt.compare(senha || "", usuario.senha));
+
+  if (!senhaCerta) {
+    // mesma mensagem para e-mail ou senha errados
+    return res.status(401).json({ erro: "E-mail ou senha inválidos!" });
+  }
+
+  // guardar na SESSÃO quem está logado
+  req.session.usuario = {
+    id: usuario.id,
+    nome: usuario.nome,
+    email: usuario.email,
+  };
+  res.json({
+    mensagem: `Bem-vindo(a), ${usuario.nome}`,
+    usuario: req.session.usuario,
+  });
+}
+
+// GET /me
+export function me(req, res) {
+  if (!req.session.usuario) {
+    return res.status(401).json({ erro: "Ninguém logado!" });
+  }
+
+  res.json(req.session.usuario);
+}
+
+// POST /logout
+export function logout(req, res) {
+  req.session.destroy(() => {
+    res.json({ mensagem: "Você foi deslogado!" });
+  });
 }
